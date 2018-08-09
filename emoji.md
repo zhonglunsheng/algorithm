@@ -1,7 +1,7 @@
 ### emoji 指南
 
-emoji                                   | emoji 代码                   | commit 说明    
-:--------                               | :--------                    | :--------
+emoji                                   | emoji 代码                   | commit 说明            | 英文  
+:--------                               | :--------                    | :--------              | :--------
 :tada: (庆祝)                           | `:tada:`                     | 初次提交               | Initial commit
 :sparkles: (火花)                       | `:sparkles:`                 | 引入新功能             | Introducing new features
 :bookmark: (书签)                       | `:bookmark:`                 | 发行/版本标签          | Release/version label
