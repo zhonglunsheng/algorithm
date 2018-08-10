@@ -107,4 +107,31 @@ public Node reverseIteralively(Node head){
     return head;
 }
 ```
+#### 从尾到头输出单链表
+```
+/**
+ * 利用递归
+ */
+public void printReverseLinkedList(Node head){
+    if (head != null) {
+        printReverseLinkedList(head.next);
+        System.out.println(head.data);
+    }
+}
+
+/**
+ * 跟据栈的特性先进后出
+ */
+public void printReverseLinkedList(Node head){
+    Stack<Integer> stack = new Stack<>();
+    while(head != null){
+        stack.add(head.data);
+        head = head.next;
+    }
+    while(!stack.isEmpty()){
+        System.out.println(stack.peek());
+        stack.pop();
+    }
+}
+```
 
