@@ -85,3 +85,26 @@ public int findElem02(Node head, int k){
 		return lowNode.data;
 	}
 ```
+#### 如何实现单链表反转
+```
+/**
+ * 假设i j k 三个结点反转，反转是后面结点的下一个指向前一个结点，显然链表的头结点就是原链表的尾结点即null,那么必须要有一个来保存j结点保证链表不断
+ * [图解](https://blog.csdn.net/feliciafay/article/details/6841115)
+ */
+public Node reverseIteralively(Node head){
+    Node pReverseNode = head;
+    Node qNode = head.next;
+    head.next = null;
+    Node rNode = null;
+    
+    while(qNode != null){
+        rNode = qNode.next;			
+        qNode.next = pReverseNode;
+        pReverseNode = qNode;
+        qNode = rNode;			
+    }
+    head = pReverseNode;
+    return head;
+}
+```
+
