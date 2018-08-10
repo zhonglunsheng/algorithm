@@ -134,4 +134,21 @@ public void printReverseLinkedList(Node head){
     }
 }
 ```
-
+#### 寻找单链表中间结点
+```
+/**
+ *两个指针，两个指针指向头结点，一个指针每次移动一步，另一个指针每次移动两步，当快指针到达尾部时。当链表长度为奇数：慢指针的位置就是中间结点，偶数时慢指针的位置和下一个结点位置是中间结点
+ */
+public Node searchMin(Node head){
+    Node fastNode = head;
+    Node lowNode = head;
+    int length = 0;
+    while(fastNode != null && fastNode.next != null && fastNode.next.next != null){
+        fastNode = fastNode.next.next;
+        lowNode = lowNode.next;
+        length++;
+    }
+    
+    return lowNode;
+}
+```
