@@ -173,3 +173,19 @@ public boolean isLoop(Node head){
     return !(fastNode == null || fastNode.next == null);
 }
 ```
+#### 在不知道头指针的情况下删掉结点
+```
+/**
+ *情况一：当删掉的结点为尾结点时，不能删除，因为倒数的二个结点的值无法设置为null除
+ *情况二：当删掉的结点不是尾结点时，把结点的值换成下一个结点的值，把下一个结点删
+ */
+public boolean deleteNode(Node node){
+    if (node == null || node.next == null) {
+        return false;
+    }
+    node.data = node.next.data;
+    node.next = node.next.next;
+    return true;
+}
+```
+
