@@ -152,3 +152,24 @@ public Node searchMin(Node head){
     return lowNode;
 }
 ```
+#### 检测链表是否有环
+```
+/**
+ *两个指针指向头结点，快指针每次移动两步步，慢指针每次移动一步，当快指针等于慢指针时那么链表有环
+ */
+public boolean isLoop(Node head){
+    if (head == null) {
+        return false;
+    }
+    Node fastNode = head;
+    Node lowNode = head;
+    while(fastNode != null && fastNode.next != null){
+        fastNode = fastNode.next.next;
+        lowNode = lowNode.next;
+        if (fastNode == lowNode) {
+            return true;
+        }
+    }
+    return !(fastNode == null || fastNode.next == null);
+}
+```
