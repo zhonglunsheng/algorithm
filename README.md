@@ -191,6 +191,10 @@ public boolean deleteNode(Node node){
 
 #### 判断两个链表是否相交，得出相交的结点
 ```
+/**
+ *如果两个链表相交，那么他们的尾结点一定相同
+ *如果len1 和len2分别为两个链表的长度，假设len1>len2 那么长度大的从len1-len2的位置开始和长度小的一起遍历，第一个相同的结点即相交的结点
+ */
 public Node isCross(Node h1, Node h2 ){
     if (h1 == null || h2 == null) {
         return null;
@@ -239,3 +243,29 @@ public Node isCross(Node h1, Node h2 ){
     return nodeH1;
 }
 ```
+#### 用O(1)的时间复杂度求栈中最小元素
+```
+/**
+ *空间换时间，创建一个辅助栈，每次入栈时，把栈中的最小元素放入辅助栈中，然后推出时的元素和辅助栈顶的元素相同时，也把辅助栈的元素推出
+ */
+public Object getMin(MyStack<Integer> stack){
+    if (stack == null) {
+        return null;
+    }
+    MyStack<Integer> temp = new MyStack<>();
+    while(!stack.isEmpty()){
+        Integer num = stack.pop();
+        if (temp.isEmpty()) {
+            temp.push(num);
+        }else{
+            int min = temp.peek();
+            if (num < min) {
+                temp.push(num);
+            }
+        }
+    }
+    return temp.peek();
+    
+}
+```
+
