@@ -189,3 +189,53 @@ public boolean deleteNode(Node node){
 }
 ```
 
+#### 判断两个链表是否相交，得出相交的结点
+```
+public Node isCross(Node h1, Node h2 ){
+    if (h1 == null || h2 == null) {
+        return null;
+    }
+    Node nodeA = h1;
+    Node nodeB = h2;
+    int lengthA = 1;
+    int lengthB = 1;
+    while(nodeA.next != null || nodeB.next != null){
+        if (nodeA.next != null) {
+            nodeA = nodeA.next;
+            lengthA++;
+        }
+        if (nodeB.next != null) {
+            nodeB = nodeB.next;
+            lengthB++;
+        }
+    }
+    if (nodeA != nodeB) {
+        return null;
+    }
+    
+    Node nodeH1 = h1;
+    Node nodeH2 = h2;
+    if (lengthA > lengthB) {
+        int abs = lengthA - lengthB;
+        while(abs > 0){
+            nodeH1 = nodeH1.next;
+            abs --;
+        }
+    }
+    
+    if (lengthB > lengthA) {
+        int abs = lengthB - lengthA;
+        while(abs > 0){
+            nodeH2 = nodeH2.next;
+            abs --;
+        }
+    }
+    
+    while(nodeH1 != nodeH2){
+        nodeH1 = nodeH1.next;
+        nodeH2 = nodeH2.next;
+    }
+            
+    return nodeH1;
+}
+```
