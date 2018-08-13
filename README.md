@@ -453,4 +453,32 @@ private int getMidIndex(int[] arr, int left, int right) {
     return left;
 }
 ```
+#### 希尔排序
+```
+/**
+ *插入排序的优化 数组越有序 插入越快
+ */
+public void shellSort(int[] arr, int n){
+    if (arr == null || n < 1 || arr.length < 0){
+        return;
+    }
+
+    for (int i = n; i > 0; i--){
+        oneShellSort(arr, i);
+    }
+}
+
+private void oneShellSort(int[] arr, int n) {
+    for(int i = 0; i < arr.length; i+=n){
+        int temp = arr[i];
+        int j = i;
+        while(j > 0 && temp < arr[j-n]){
+            arr[j] = arr[j-n];
+            j -= n;
+        }
+        arr[j] = temp;
+    }
+}
+```
+
 
