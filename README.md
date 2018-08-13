@@ -296,4 +296,30 @@ public class MyQueue<E> {
 	}	
 }
 ```
+#### 冒泡排序
+/**
+ *相邻之间进行比较 如果已经排序好了 只需遍历一次即可 
+ */
+```
+public void bubbleSort(int arr[]){
+    if (arr == null || arr.length <= 0) {
+        return;
+    }
+    int swapCount;
+    for(int i = 0; i < arr.length-1; i++){
+        swapCount = 0;
+        for(int j = 0; j < arr.length-i-1; j++){
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                swapCount ++;
+            }		
+        }
+        if (swapCount == 0) {
+            break;
+        }
+    }
+}
+```
 
