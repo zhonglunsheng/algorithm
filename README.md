@@ -322,4 +322,31 @@ public void bubbleSort(int arr[]){
     }
 }
 ```
+#### 选择排序
+/**
+ *每次遍历选出最小的值 交换位置 
+ */
+```
+public void selectSort(int arr[]){
+    if (arr == null || arr.length <= 0) {
+        return;
+    }
+    for (int i = 0; i < arr.length; i++){
+        int min = arr[i];
+        int minIndex = i;
+        for (int j = i; j < arr.length; j++){
+            if (min < arr[j]){
+                min = arr[j];
+                minIndex = j;
+            }
+        }
+
+        if (minIndex != i){
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
+```
 
