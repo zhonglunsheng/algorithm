@@ -268,4 +268,32 @@ public Object getMin(MyStack<Integer> stack){
     
 }
 ```
+#### 用两个栈来模拟队列
+/**
+ *一个压人栈A 一个弹出栈B 情况一：如果B不是空，直接把B里面的元素弹出 情况二：如果B是空，把A的全部弹出到B内，然后*由B弹出，也把辅助栈的元素推出
+ */
+```
+public class MyQueue<E> {
+	MyStack<E> stackA = new MyStack<>();
+	MyStack<E> stackB = new MyStack<>();
+	
+	public void put (E e){
+		stackA.push(e);
+	}
+	
+	public E pop(){
+		E e = null;
+		if (stackB.isEmpty()) {
+			while(!stackA.isEmpty()){
+				stackB.push(stackA.pop());
+			}
+		}
+		return stackB.pop();
+	}
+	
+	public boolean isEmpty(){
+		return stackA.isEmpty() && stackB.isEmpty();
+	}	
+}
+```
 
