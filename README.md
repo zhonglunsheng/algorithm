@@ -480,5 +480,46 @@ private void oneShellSort(int[] arr, int n) {
     }
 }
 ```
+#### 堆排序
+```
+/**
+ *构造大顶堆 获取最值 交换位置
+ *图解https://www.cnblogs.com/MOBIN/p/5374217.html
+ */
+public void heapSort(int[] arr){
+    if (arr == null || arr.length <= 0){
+        return;
+    }
+    // 构建大顶堆 arr.length / 2 为存在叶子的节点个数
+    for(int i = arr.length / 2; i >= 0; i--){
+        heapAdjust(arr, i, arr.length -1);
+    }
+
+    // 每次堆调整 获取的是当前最大值 把堆顶和最后面元素交换 重新调整
+    for (int i = 1; i < arr.length; i++){
+        int temp = arr[0];
+        arr[0] = arr[arr.length -i];
+        arr[arr.length - i] = temp;
+        heapAdjust(arr, 0 , arr.length-1);
+    }
+}
+
+private void heapAdjust(int[] arr, int begin, int end) {
+    int temp = arr[begin];
+    for (int i = begin * 2 + 1; i <= end; i = i * 2 + 1){
+        if (i < end && arr[i] < arr[i+1]){
+            i ++;
+        }
+
+        if (temp > arr[i]){
+            break;
+        }
+
+        arr[begin] = arr[i];
+        begin = i;
+    }
+    arr[begin] = temp;
+}
+```
 
 
