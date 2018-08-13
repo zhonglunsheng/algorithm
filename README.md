@@ -419,4 +419,38 @@ private void merge(int[] arr, int mid, int left, int right) {
     }
 }
 ```
+#### 快速排序
+/**
+ *选取基准，小的放左边，大的放右边
+ */
+```
+public void fastSort(int[] arr, int left, int right){
+    if (arr == null || left >= right || right >= arr.length){
+        return;
+    }
+
+    int mid = getMidIndex(arr, left, right);
+    // 左边递归
+    fastSort(arr, left, mid-1);
+    // 右边递归
+    fastSort(arr, mid + 1, right);
+
+}
+
+private int getMidIndex(int[] arr, int left, int right) {
+    int pointNum = arr[left];
+    while(left < right){
+        while(left < right && arr[right] >= pointNum){
+            right --;
+        }
+        arr[left] = arr[right];
+        while(left < right && arr[left] <= pointNum){
+            left ++;
+        }
+        arr[right] = arr[left];
+    }
+    arr[left] = pointNum;
+    return left;
+}
+```
 
