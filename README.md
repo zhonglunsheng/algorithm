@@ -369,4 +369,54 @@ public void insertSort(int arr[]){
         arr[j] = temp;
     }
 ```
+#### 归并排序
+```
+/**
+ *递归划分半子表 然后合并
+ */
+public void mergSort(int arr[], int left, int right){
+    if (arr == null || arr.length <= 0 || left >= right || right >= arr.length){
+        return;
+    }
+
+    int mid = (left + right) / 2;
+    // 左边递归拆分
+    mergSort(arr, left, mid);
+    // 右边递归拆分
+    mergSort(arr, mid+1, right);
+    // 数组合并
+    merge(arr, mid , left, right);
+
+}
+
+private void merge(int[] arr, int mid, int left, int right) {
+    int[] temp = new int[right - left + 1];
+    int i = left;
+    int j = mid + 1;
+    int k = 0;
+    while(i <= mid && j <= right){
+        if (arr[i] < arr[j]){
+            temp[k] = arr[i];
+            i ++;
+        }else {
+            temp[k] = arr[j];
+            j++;
+        }
+        k++;
+    }
+    // 左边有剩余
+    while(i <= mid){
+        temp[k++] = arr[i++];
+    }
+    // 右边有剩余
+    while(j <= right){
+        temp[k++] = arr[j++];
+    }
+    k = 0;
+    // 将排序后的数字赋值到原数组
+    while(left <= right){
+        arr[left++] = temp[k++];
+    }
+}
+```
 
