@@ -349,4 +349,24 @@ public void selectSort(int arr[]){
     }
 }
 ```
+#### 插入排序
+```
+/**
+ *比较插入合适的位置 
+ */
+public void insertSort(int arr[]){
+    if (arr == null || arr.length <= 0) {
+        return;
+    }
+
+    for (int i = 0; i < arr.length; i++){
+        int temp = arr[i];
+        int j = i;
+        while(j > 0 && temp < arr[j - 1]){
+            arr[j] = arr[j -1];
+            j --;
+        }
+        arr[j] = temp;
+    }
+```
 
