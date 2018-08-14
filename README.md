@@ -533,5 +533,32 @@ private int powerN(int m, int n){
     return m;
 }
 ```
+#### 判断一个数是否为2的n次方
+```
+/**
+ *方法一：移位操作判断移位的次数是否和给定的数相同 O(logn)
+ *方法二：利用2的n次方二进制只有第一位为1，通过n&(n-1)运算结果是否为0来判断 O(1)
+ */
+public boolean isPower(int n){
+    if (n < 1){
+        return false;
+    }
+    int i = 1;
+    while(i <= n){
+        if (i == n){
+            return true;
+        }
+        i = i << 1;
+    }
+    return false;
+}
 
+public boolean isPower02(int n){
+    if (n < 1){
+        return false;
+    }
+    int m = n & n -1;
+    return m == 0;
+}
+```
 
