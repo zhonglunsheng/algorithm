@@ -521,5 +521,17 @@ private void heapAdjust(int[] arr, int begin, int end) {
     arr[begin] = temp;
 }
 ```
+#### 移位操作实现乘法运算
+```
+/**
+ *右移一位乘以2 左移一位除以2
+ */
+private int powerN(int m, int n){
+    for (int i = 0; i < n; i++) {
+        m = m << 1;
+    }
+    return m;
+}
+```
 
 
