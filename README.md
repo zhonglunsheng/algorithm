@@ -687,3 +687,27 @@ public int maxSubSum03(int[] arr) {
 
 }
 ```
+#### 数组中重复元素最多的数
+```
+public int maxRepeatTime(int[] arr){
+    int maxCount = 0;
+    int maxIndex = 0;
+    int curCount;
+    Map<Integer,Integer> map = new HashMap<>();
+    for (int i = 0; i < arr.length; i++) {
+        if (map.containsKey(arr[i])){
+            curCount = map.get(arr[i]);
+            curCount = curCount + 1;
+            map.put(arr[i], curCount);
+            if (curCount > maxCount){
+                maxCount = curCount;
+                maxIndex = i;
+            }
+        }else {
+            map.put(arr[i], 1);
+        }
+    }
+    return arr[maxIndex];
+}
+```
+
