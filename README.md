@@ -561,4 +561,31 @@ public boolean isPower02(int n){
     return m == 0;
 }
 ```
+#### 二进制中1的个数
+```
+/**
+ * n & 1(0001) 判断当前位是否为1 然后移位运算
+ */
+public int countOne(int n){
+    int count = 0;
+    while(n > 0){
+        if ((n & 1) == 1){
+            count++;
+        }
+        n = n >> 1;
+    }
+    return count;
+}
+
+/**
+ * 快速版 n & (n-1) 消除有二进制中有1的位 比如8(1000)&7(0111) = 0
+ */
+public int countOne02(int n){
+    int count = 0;
+    for(count = 0; n > 0; count++ ){
+        n = n  & (n-1);
+    }
+    return count;
+}
+```
 
