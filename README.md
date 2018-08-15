@@ -780,3 +780,39 @@ private void ReserveArr(int[] arr, int left, int right) {
     }
 }
 ```
+#### 数组中第K个最小的数
+```
+/**
+ * 快排的思想 一次快排确定唯一位置
+ **/
+public int findArrWithK(int[] arr, int k){
+    if (arr == null || arr.length <= 0){
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    return getMaxWithK(arr, 0, arr.length-1, arr.length-k+1);
+}
+
+private int getMaxWithK(int[] arr, int low, int hight, int k) {
+    int left = low;
+    int right = hight;
+    int pointNum = arr[left];
+    while(left < right){
+        while(left < right && arr[right] >= pointNum){
+            right --;
+        }
+        arr[left] = arr[right];
+        while(left < right && arr[left] <= pointNum){
+            left ++;
+        }
+        arr[right] = arr[left];
+    }
+    arr[left] = pointNum;
+    if (left + 1 == k){
+        return pointNum;
+    }else if (left + 1 < k){
+        return getMaxWithK(arr,left+1, hight, k);
+    }else{
+        return getMaxWithK(arr, low, left-1, k);
+    }
+}
+```
