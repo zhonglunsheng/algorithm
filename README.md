@@ -627,3 +627,63 @@ public int findArrSecondMax(int[] arr){
     return secondMax;
 }
 ```
+
+#### 最大子数组之和
+```
+/**
+ * 暴力求解 O(n*n)
+ */
+public int maxSubSum(int[] arr){
+    int maxSum = 0;
+    for (int i = 0; i < arr.length; i++) {
+        int curSum = 0;
+        for (int j = i; j < arr.length; j++) {
+            curSum += arr[j];
+            if (curSum > maxSum){
+                maxSum = curSum;
+            }
+        }
+    }
+    return maxSum;
+}
+
+/**
+ * 数组中有正有负 那么子序列中最大子数组第一个元素一定为正 和一定为正 O(n)
+ */
+public int maxSubSum02(int[] arr){
+    if (arr == null || arr.length <= 0){
+        return 0;
+    }
+    int curSum = 0;
+    int maxSum = 0;
+    for (int i = 0; i < arr.length; i++) {
+        curSum += arr[i];
+        if (maxSum < curSum){
+            maxSum = curSum;
+        }
+        if (curSum < 0){
+            curSum = 0;
+        }
+    }
+    return maxSum;
+}
+/**
+ * 动态规划 包括当前arr[i]  和不包括当前arr[i]
+ */
+public int maxSubSum03(int[] arr) {
+    if (arr == null || arr.length <= 0) {
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    // 包括arr[i]的当前最大子数组
+    int curMax = arr[0];
+    // 连续子数组最大和
+    int subMax = arr[0];
+
+    for (int i = 1; i < arr.length; i++) {
+        curMax = Math.max(curMax+arr[i], arr[i]);
+        subMax = Math.max(curMax, subMax);
+    }
+    return subMax;
+
+}
+```
