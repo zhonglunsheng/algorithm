@@ -756,3 +756,27 @@ public int kindsForSum02(int[] arr){
     return count;
 }
 ```
+#### 数组循环右移K位
+```
+/**
+ *看成字符串反转三次 12345 第一次前n位反转 32145 第二次n后面反转54 第三次全部反转 45123
+ **/
+public void rightShift(int[] arr,int n){
+    if (arr == null || arr.length <= 0){
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    ReserveArr(arr, 0, n-1);
+    ReserveArr(arr, n, arr.length-1);
+    ReserveArr(arr, 0, arr.length-1);
+}
+
+private void ReserveArr(int[] arr, int left, int right) {
+    while(left < right){
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+        left++;
+        right--;
+    }
+}
+```
