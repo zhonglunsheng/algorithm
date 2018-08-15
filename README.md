@@ -610,5 +610,20 @@ public void findArrMinAndMax(int[] arr){
 }
 ```
 
-
-
+#### 数组中第二大的数
+```
+public int findArrSecondMax(int[] arr){
+    if (arr == null || arr.length <=0){
+        return 0;
+    }
+    int max = arr[0];
+    int secondMax = arr[0];
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] > max){
+            secondMax = max;
+            max = arr[i];
+        }
+    }
+    return secondMax;
+}
+```
