@@ -816,3 +816,21 @@ private int getMaxWithK(int[] arr, int low, int hight, int k) {
     }
 }
 ```
+#### 数组中唯一重复的数字
+```
+/**
+ * 1 到 N的和 减去 数组的累加和
+ */
+private int findDupOne(int arr[]){
+    if (arr == null || arr.length <= 0){
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    int n = arr[arr.length - 1];
+    int sumA = n * (n + 1) / 2;
+    int sumB = 0;
+    for (int i = 0; i < arr.length; i++) {
+        sumB += arr[i];
+    }
+    return sumB - sumA;
+}
+```
