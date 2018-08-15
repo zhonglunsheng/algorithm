@@ -710,4 +710,49 @@ public int maxRepeatTime(int[] arr){
     return arr[maxIndex];
 }
 ```
+#### 数组中俩俩相加等于20的种数
+```
+/**
+ *暴力破解
+ */
+public int kindsForSum(int[] arr){
+    if (arr == null || arr.length <= 0){
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    int count = 0;
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = i; j < arr.length; j++) {
+            if ((arr[i] + arr[j]) == 20){
+                count++;
+            }
+        }
+    }
+    return count;
+}
 
+/**
+ *先快排 后遍历
+ */
+public int kindsForSum02(int[] arr){
+    if (arr == null || arr.length <= 0){
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    Arrays.sort(arr);
+    int count = 0;
+    int begin = 0;
+    int end = arr.length -1;
+    while(begin < end){
+        if (arr[begin] + arr[end] < 20){
+            begin ++;
+        }else if (arr[begin] + arr[end] > 20){
+            end --;
+        }else{
+            System.out.println(arr[begin]+" "+arr[end]);
+            begin ++;
+            end --;
+            count++;
+        }
+    }
+    return count;
+}
+```
