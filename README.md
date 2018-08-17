@@ -850,3 +850,32 @@ public int findDubOne(int[] arr){
     return sum;
 }
 ```
+#### 寻找数组中有两个数字出现一次，其他出现2次
+```
+/**
+ * 拆分成其他出现2次 只有一个数字出现一次 拆分标准 两个不同数字的二进制不会相同 取异或结果的二进制第一个1位为区别
+ **/
+public void findNumAppearTwo(int[] arr, int[] num1, int[] num2){
+    if (arr == null || arr.length <= 1){
+        return;
+    }
+    int sum  = 0;
+    for (int i = 0; i < arr.length; i++) {
+        sum = sum ^ arr[i];
+    }
+    int index;
+    for (index = 0; index < 32; index++) {
+        if ((sum & (1 << index)) != 0){
+            break;
+        }
+    }
+
+    for(int i = 0; i < arr.length; i++){
+        if (((arr[i] >> index) & 1) == 1){
+            num2[0] ^= arr[i];
+        }else{
+            num1[0] ^= arr[i];
+        }
+    }
+}
+```
