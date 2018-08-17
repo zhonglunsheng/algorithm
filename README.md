@@ -834,3 +834,19 @@ private int findDupOne(int arr[]){
     return sumB - sumA;
 }
 ```
+#### 寻找数组中只出现一次的数字，其他出现2次
+```
+/*
+ * 采用异或运算，任何异或它自己的都等于0
+ **/
+public int findDubOne(int[] arr){
+    if (arr == null || arr.length <= 0){
+        throw new IllegalArgumentException("数组不能为空");
+    }
+    int sum = 0;
+    for (int i = 0; i < arr.length; i++) {
+        sum = sum ^ arr[i];
+    }
+    return sum;
+}
+```
