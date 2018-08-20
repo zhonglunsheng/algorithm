@@ -879,3 +879,26 @@ public void findNumAppearTwo(int[] arr, int[] num1, int[] num2){
     }
 }
 ```
+#### 寻找数组中一个数字出现一次 其他重复出现3次
+```
+/**
+* 二进制取模法
+* @param arr
+* @return
+*/
+public int findNumAppearN(int[] arr){
+int sum;
+int result = 0;
+for (int i = 0; i < 32; i++) {
+    sum = 0;
+    for (int j = 0; j < arr.length; j++) {
+        sum += ((arr[j] >> i)&1);
+    }
+
+    if (sum % 3 == 1){
+        result += (1 << i);
+    }
+}
+return result;
+}
+```
