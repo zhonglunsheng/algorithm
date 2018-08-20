@@ -902,3 +902,24 @@ for (int i = 0; i < 32; i++) {
 return result;
 }
 ```
+
+#### 求数组中两个数差的最大值
+```
+public int getMaxMin(int arr[]){
+    if (arr == null || arr.length <= 0){
+        return 0;
+    }
+    int high = arr[0];
+    int low = arr[0];
+    for (int i = 0; i < arr.length; i++) {
+        if (high < arr[i]){
+            high = arr[i];
+        }
+
+        if (low > arr[i]){
+            low = arr[i];
+        }
+    }
+    return high - low;
+}
+```
