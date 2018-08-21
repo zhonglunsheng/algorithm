@@ -971,3 +971,21 @@ public int getAbsValue(int[] arr){
     }
 }
 ```
+#### 求指定数字在数组中第一次出现的位置，相邻数字之间差为1
+```
+public int getKIndex(int[] arr, int k){
+    if (arr == null || arr.length <= 0){
+        return 0;
+    }
+    int num = arr[0];
+    int minus = k - num;
+    if (minus < 0){
+        return 0;
+    }else{
+        if (arr[minus] == k){
+            return minus;
+        }
+    }
+    return 0;
+}
+```
