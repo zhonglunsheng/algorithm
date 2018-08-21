@@ -923,3 +923,15 @@ public int getMaxMin(int arr[]){
     return high - low;
 }
 ```
+#### 如何用递归方法求一个整数数组的最大值
+```
+public int getMaxValue(int[] arr, int max, int i){
+    if (i >= arr.length){
+        return max;
+    }
+    if (max < arr[i]){
+        max = arr[i];
+    }
+    return getMaxValue(arr, max, ++i);
+}
+```
