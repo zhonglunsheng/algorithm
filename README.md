@@ -935,3 +935,39 @@ public int getMaxValue(int[] arr, int max, int i){
     return getMaxValue(arr, max, ++i);
 }
 ```
+
+#### 求有序数组中绝对值最小的数
+```
+public int getAbsValue(int[] arr){
+    if (arr == null || arr.length <= 0){
+        return 0;
+    }
+
+    int head = arr[0];
+    int tail = arr[arr.length-1];
+
+    if (tail <= 0){
+        return -tail;
+    }else if (head >= 0){
+        return head;
+    }else{
+        int high = arr.length;
+        int low = 0;
+        while(true){
+            int middle = (high - low) / 2;
+            if (middle-1 >= 0 || middle + 1 < arr.length){
+                if (arr[middle-1] < 0 && arr[middle +1] > 0){
+                    return arr[middle] < -arr[middle-1] ? arr[middle]:arr[middle -1];
+                }else{
+                    if (arr[middle] > 0){
+                        high = middle;
+                    }else{
+                        low = middle;
+                    }
+                    continue;
+                }
+            }
+        }
+    }
+}
+```
