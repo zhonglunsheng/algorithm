@@ -1,4 +1,5 @@
 package com.lsheng.algorithm.linkedlist;
+
 /**
  * @author zhonglunsheng
  * @Description
@@ -6,7 +7,7 @@ package com.lsheng.algorithm.linkedlist;
  */
 public class ReverseSinglelyList {
 
-    public static void reverseSinglyList(Node head){
+    public static Node reverseSinglelyList(Node head){
        Node pre = null;
        Node next = null;
 
@@ -16,16 +17,16 @@ public class ReverseSinglelyList {
           pre = head;
           head = next;
        }
-    }
-}
-
-
-class Node{
-    public int value;
-    public Node next;
-
-    public Node(int data){
-        this.value = data;
+       return pre;
     }
 
+    static class Node{
+        public int value;
+        public Node next;
+
+        public Node(int data){
+            this.value = data;
+        }
+
+    }
 }
