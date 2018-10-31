@@ -6,7 +6,7 @@ package com.lsheng.algorithm.linkedlist;
  */
 public class ReverseSinglelyList {
 
-    public static void reverseSinglelyList(Node head){
+    public static void reverseSinglyList(Node head){
        Node pre = null;
        Node next = null;
 
