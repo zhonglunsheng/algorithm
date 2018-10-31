@@ -12,8 +12,8 @@ public class SpiralOrderPrint {
         spiralOrderPrint(arr);
     }
 
-    public static void spiralOrderPrint(int[][] arr){
-        if (arr == null){
+    public static void spiralOrderPrint(int[][] matrix){
+        if (matrix == null){
             return;
         }
 
@@ -22,12 +22,12 @@ public class SpiralOrderPrint {
         // 顶部左上角列坐标点
         int tC = 0;
         // 底部右上角行坐标点
-        int dR = arr.length - 1;
+        int dR = matrix.length - 1;
         // 底部右上角列坐标点
-        int dC = arr[0].length - 1;
+        int dC = matrix[0].length - 1;
 
         while (tR <= dR && tC <= dC){
-            printEdge(arr, tR ++, tC ++, dR --, dC --);
+            printEdge(matrix, tR ++, tC ++, dR --, dC --);
         }
 
     }
