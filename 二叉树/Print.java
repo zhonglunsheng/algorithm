@@ -1,7 +1,7 @@
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.LinkedList;
-/**
+import java.util.*;
+
+
+/*
 public class TreeNode {
     int val = 0;
     TreeNode left = null;
@@ -14,27 +14,31 @@ public class TreeNode {
 
 }
 */
-public class Solution {
-    public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
-        
+public class Print {
+    ArrayList<ArrayList<Integer> > print(TreeNode pRoot) {
         Queue<TreeNode> queue = new LinkedList<>();
-        ArrayList<Integer> list = new ArrayList<>();
-        
-        queue.add(root);
+        ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
+        queue.add(pRoot);
         
         while(!queue.isEmpty()){
-            int ctn = queue.size();
             
+            int ctn = queue.size();
+            ArrayList<Integer> list = new ArrayList<>();
             while(ctn-- > 0){
                 TreeNode node = queue.poll();
                 if(node == null){
                     continue;
                 }
+                
                 list.add(node.val);
                 queue.add(node.left);
                 queue.add(node.right);
             }
+            if(list.size() != 0){
+                lists.add(list);
+            } 
         }
-        return list;
+        return lists;
     }
+    
 }
